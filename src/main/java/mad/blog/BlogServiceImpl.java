@@ -17,17 +17,14 @@ public class BlogServiceImpl implements BlogService {
         return repos.findAll();
     }
 
-    public Blog fetch(long id) {
-        return repos.findById(id).orElse(Blog.builder().build());
+    public BlogDto fetch(long id) {
+        Blog blog = repos.findById(id).orElse(Blog.builder().build());
+        return BlogDto.fromBlog(blog);
     }
 
-    public Blog save(BlogDto dto) {
-        Blog blog = Blog.builder()
-        .id(dto.getId())
-        .title(dto.getTitle())
-        .contents(dto.getContents())
-        .build();
-        return repos.save(blog);
+    public BlogDto save(BlogDto dto) {
+        Blog blog = repos.save(dto.toBlog());
+        return BlogDto.fromBlog(blog);
     }
 
     public void delete(Long id) {

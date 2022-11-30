@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Entity
 @Builder
+@Data
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,7 +24,7 @@ public class BlogControllerTests {
 
     @BeforeEach
     void beforeEach() {
-        Blog first = Blog.builder()
+        BlogDto first = BlogDto.builder()
             .id(1L)
             .title("테스트 타이틀")
             .contents("테스트 컨텐츠를 적당히 씁니다.").build();
@@ -46,10 +46,5 @@ public class BlogControllerTests {
         mvc.perform(MockMvcRequestBuilders.get("/blog/fetch?id=2"))
             .andExpect(status().isOk())
             .andDo(print());
-            // .andExpect(jsonPath("$.id").exists())
-            // .andExpect(jsonPath("$.title").exists())
-            // .andExpect(jsonPath("$.contents").exists())
-            // .andExpect(jsonPath("$.created").exists())
-            // .andExpect(jsonPath("$.updated").exists());
     }
 }

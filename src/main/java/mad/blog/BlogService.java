@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BlogService {
     List<Blog> list();
-    Blog fetch(long l);
-    Blog save(BlogDto blog);
+    BlogDto fetch(long l);
+    BlogDto save(BlogDto blog);
     void delete(Long id);
 }
