@@ -36,8 +36,20 @@ public class BlogControllerTests {
         mvc.perform(MockMvcRequestBuilders.get("/blog/fetch?id=1"))
             .andExpect(status().isOk())
             .andDo(print())
+            .andExpect(jsonPath("$.id").exists())
             .andExpect(jsonPath("$.title").exists())
-            .andExpect(jsonPath("$.contents").exists());
-        verify(service).getBlog(1L);
+            .andExpect(jsonPath("$.contents").exists())
+            .andExpect(jsonPath("$.created").isEmpty())
+            .andExpect(jsonPath("$.updated").isEmpty());
+        verify(service).fetch(1L);
+
+        mvc.perform(MockMvcRequestBuilders.get("/blog/fetch?id=2"))
+            .andExpect(status().isOk())
+            .andDo(print());
+            // .andExpect(jsonPath("$.id").exists())
+            // .andExpect(jsonPath("$.title").exists())
+            // .andExpect(jsonPath("$.contents").exists())
+            // .andExpect(jsonPath("$.created").exists())
+            // .andExpect(jsonPath("$.updated").exists());
     }
 }

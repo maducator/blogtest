@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BlogServiceImpl implements BlogService {
-    @Autowired
     BlogRepository repos;
+
+    public BlogServiceImpl(@Autowired BlogRepository repos) {
+        this.repos = repos;
+    }
 
     public List<Blog> list() {
         return repos.findAll();
