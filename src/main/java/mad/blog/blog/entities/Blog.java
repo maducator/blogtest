@@ -1,4 +1,4 @@
-package mad.blog;
+package mad.blog.blog.entities;
 
 import java.time.LocalDateTime;
 

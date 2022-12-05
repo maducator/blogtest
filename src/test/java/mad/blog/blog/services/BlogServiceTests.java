@@ -1,4 +1,4 @@
-package mad.blog;
+package mad.blog.blog.services;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import mad.blog.blog.dto.BlogDto;
+import mad.blog.blog.entities.Blog;
+import mad.blog.blog.repositories.BlogRepository;
+import mad.blog.blog.services.impl.BlogServiceImpl;
 
 public class BlogServiceTests {
     private BlogRepository repos = Mockito.mock(BlogRepository.class);
@@ -28,6 +33,9 @@ public class BlogServiceTests {
         .build();
 
         Mockito.when(repos.findById(1L)).thenReturn(Optional.of(returnBlog));
+
+
+
         BlogDto dto = service.fetch(1L);
         Blog blog = repos.findById(1L).orElseThrow();
 

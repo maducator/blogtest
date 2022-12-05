@@ -1,4 +1,4 @@
-package mad.blog;
+package mad.blog.blog.controllers;
 
 import java.util.List;
 
@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import mad.blog.blog.dto.BlogDto;
+import mad.blog.blog.entities.Blog;
+import mad.blog.blog.services.BlogService;
 
 @RestController
 @RequestMapping("blog")
 public class BlogController {
+
     @Autowired
     BlogService service;
 

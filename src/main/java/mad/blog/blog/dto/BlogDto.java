@@ -1,9 +1,10 @@
-package mad.blog;
+package mad.blog.blog.dto;
 
 import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
+import mad.blog.blog.entities.Blog;
 
 @Builder
 @Data
