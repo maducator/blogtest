@@ -7,9 +7,10 @@
     <body>
         <section class="container">
             <h1 th:text="${title}">Title in here</h1>
+            <h2 th:text="#{user.title}">messages.properties user.title</h2>
 
             <table class="table table-dark">
-                <caption th:text="user list table total: 10">user list table total: </caption>
+                <caption th:text="'user list table total: 10'">user list table total: </caption>
                 <thead>
                     <tr>
                         <th>id</th>
