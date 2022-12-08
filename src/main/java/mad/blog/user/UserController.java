@@ -7,10 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -39,5 +43,29 @@ public class UserController {
             list.add(row);
         }
         return list;
+    }
+
+    @GetMapping("login")
+    String login(Model model, HttpSession session) {
+        model.addAttribute("user", session.getAttribute("user"));
+        return "user/login";
+    }
+
+    @PostMapping("processLogin")
+    String processLogin(@RequestParam Map<String, Object> params, HttpSession session) {
+        session.setAttribute("user", params);
+        return "redirect:./login";
+    }
+
+    @GetMapping("logout")
+    String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:./login";
+    }
+
+    @GetMapping("loginEcho")
+    @ResponseBody
+    Map<String, Object> loginEcho(@RequestParam Map<String, Object> params) {
+        return params;
     }
 }

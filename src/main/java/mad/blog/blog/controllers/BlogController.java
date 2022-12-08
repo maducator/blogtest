@@ -27,6 +27,11 @@ public class BlogController {
         return service.list();
     }
 
+    @GetMapping("test")
+    Blog test() {
+        return service.test();
+    }
+
     @GetMapping("fetch")
     BlogDto fetch(Long id) {
         return service.fetch(id);

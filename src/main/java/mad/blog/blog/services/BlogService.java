@@ -10,4 +10,5 @@ public interface BlogService {
     BlogDto fetch(long l);
     BlogDto save(BlogDto blog);
     void delete(Long id);
+    Blog test();
 }

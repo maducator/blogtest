@@ -36,4 +36,9 @@ public class BlogServiceImpl implements BlogService {
     public void delete(Long id) {
         repos.deleteById(id);
     }
+
+    @Override
+    public Blog test() {
+        return repos.test();
+    }
 }
